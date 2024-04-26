@@ -1,0 +1,166 @@
+{
+	"name": "lcDeploymentSourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lcConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"schema": {
+			"type": "object",
+			"properties": {
+				"instances": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"restart": {
+								"type": "integer"
+							},
+							"deploymentId": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"discoveryStatus": {
+								"type": "string"
+							},
+							"deployTag": {
+								"type": "string"
+							},
+							"startTime": {
+								"type": "string"
+							},
+							"internalIp": {
+								"type": "string"
+							},
+							"status": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"appName": {
+					"type": "string"
+				},
+				"active": {
+					"type": "boolean"
+				},
+				"started": {
+					"type": "boolean"
+				},
+				"provisioningState": {
+					"type": "string"
+				},
+				"deploymentSettings": {
+					"type": "object",
+					"properties": {
+						"runtimeVersion": {
+							"type": "string"
+						},
+						"instanceCount": {
+							"type": "integer"
+						},
+						"environmentVariables": {
+							"type": "object"
+						},
+						"cpu": {
+							"type": "number"
+						},
+						"memoryInGB": {
+							"type": "integer"
+						},
+						"jvmOptions": {
+							"type": "null"
+						},
+						"resourceRequests": {
+							"type": "object",
+							"properties": {
+								"cpu": {
+									"type": "string"
+								},
+								"memory": {
+									"type": "string"
+								}
+							}
+						},
+						"netcoreMainEntryPath": {
+							"type": "null"
+						},
+						"deploymentTimeout": {
+							"type": "integer"
+						}
+					}
+				},
+				"artifact": {
+					"type": "object",
+					"properties": {
+						"createdAt": {
+							"type": "string"
+						},
+						"dockerImage": {
+							"type": "string"
+						},
+						"appName": {
+							"type": "string"
+						},
+						"javaVersion": {
+							"type": "string"
+						},
+						"relativePath": {
+							"type": "string"
+						},
+						"sourceLocation": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"provisioningState": {
+							"type": "string"
+						},
+						"serviceId": {
+							"type": "string"
+						},
+						"type": {
+							"type": "string"
+						},
+						"updatedAt": {
+							"type": "string"
+						},
+						"resourceType": {
+							"type": "string"
+						},
+						"runtimeVersion": {
+							"type": "string"
+						}
+					}
+				},
+				"createdAt": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"deployTag": {
+					"type": "string"
+				},
+				"serviceId": {
+					"type": "string"
+				},
+				"updatedAt": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				}
+			}
+		},
+		"typeProperties": {
+			"collectionName": "Deployment"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

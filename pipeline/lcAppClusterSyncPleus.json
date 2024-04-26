@@ -1,0 +1,315 @@
+{
+	"name": "lcAppClusterSyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "lcAppClusterSync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "CosmosDbSqlApiSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"preferredRegions": []
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['serviceId']"
+								},
+								"sink": {
+									"name": "serviceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['tenantId']"
+								},
+								"sink": {
+									"name": "tenantId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resourceId']"
+								},
+								"sink": {
+									"name": "resourceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['aksClusterId']"
+								},
+								"sink": {
+									"name": "aksClusterId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['storageAccountId']"
+								},
+								"sink": {
+									"name": "storageAccountId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['fqdn']"
+								},
+								"sink": {
+									"name": "fqdn",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['ip']"
+								},
+								"sink": {
+									"name": "ip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['version']"
+								},
+								"sink": {
+									"name": "version",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['clusterAutoscalerEnabled']"
+								},
+								"sink": {
+									"name": "clusterAutoscalerEnabled",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['vnetEnabled']"
+								},
+								"sink": {
+									"name": "vnetEnabled",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['suspended']"
+								},
+								"sink": {
+									"name": "suspended",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['softDeleted']"
+								},
+								"sink": {
+									"name": "softDeleted",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['tier']"
+								},
+								"sink": {
+									"name": "tier",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deleting']"
+								},
+								"sink": {
+									"name": "deleting",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['clusterState']"
+								},
+								"sink": {
+									"name": "clusterState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['powerState']"
+								},
+								"sink": {
+									"name": "powerState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['aksSystemClusterId']"
+								},
+								"sink": {
+									"name": "aksSystemClusterId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['externalEndpointPort']"
+								},
+								"sink": {
+									"name": "externalEndpointPort",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['externalEndpointNamespace']"
+								},
+								"sink": {
+									"name": "externalEndpointNamespace",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['externalEndpointProtocol']"
+								},
+								"sink": {
+									"name": "externalEndpointProtocol",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['monitoringSettingName']"
+								},
+								"sink": {
+									"name": "monitoringSettingName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['traceEnabled']"
+								},
+								"sink": {
+									"name": "traceEnabled",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['appInsightsSamplingRate']"
+								},
+								"sink": {
+									"name": "appInsightsSamplingRate",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"path": "$['appInsightsAgentVersions']['java']"
+								},
+								"sink": {
+									"name": "appInsightsAgentVersions_java",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['syncTime']"
+								},
+								"sink": {
+									"name": "syncTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['region']"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "lcAppClusterSourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "lcAppClusterSinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T03:00:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

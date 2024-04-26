@@ -1,0 +1,310 @@
+{
+	"name": "rpAppEntitySyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "rpAppEntitySync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureTableSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"azureTableSourceIgnoreTableNotFound": false
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PartitionKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartitionKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RowKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Timestamp",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "Timestamp",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "ActiveDeploymentName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ActiveDeploymentName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomPersistentDisks",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomPersistentDisks",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Deleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "Deleted",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "EnableEndToEndTLS",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "EnableEndToEndTLS",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "Guid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Guid",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "HttpsOnly",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "HttpsOnly",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "InternalState",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "InternalState",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IsAcsEnabled",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsAcsEnabled",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "IsServiceRegistryEnabled",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsServiceRegistryEnabled",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "OperationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OperationId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "PersistentDisk",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PersistantDisk",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Public",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "Public",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "TemporaryDisk",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TemporaryDisk",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "LoadedCertificates",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LoadedCertificates",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BindedAcsName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BindedAcsName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BindedServiceRegistryName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BindedServiceRegistryName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "syncTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SyncTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "string"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "rpAppEntitySourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "rpAppEntitySinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T02:57:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

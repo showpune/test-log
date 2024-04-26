@@ -1,0 +1,222 @@
+{
+	"name": "rpKPackBuildDefinitionEntitySyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "rpKPackBuildDefinitionEntitySync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureTableSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"azureTableSourceIgnoreTableNotFound": false
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PartitionKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartitionKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RowKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Timestamp",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "Timestamp",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildTimeEnvironmentVariables",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BuildTimeEnvironmentVariables",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuilderName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BuilderName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ProvisioningState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProvisioningState",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ResourceRequests",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResourceRequests",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceCodeRelativePath",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceCodeRelativePath",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Apms",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Apms",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ApmsEnabledGlobally",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ApmsEnabledGlobally",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Certificates",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Certificates",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "LatestBuildResultId",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "LatestBuildResultId",
+									"type": "Int64",
+									"physicalType": "long"
+								}
+							},
+							{
+								"source": {
+									"name": "syncTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SyncTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "string"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "rpKPackBuildDefinitionEntitySourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "rpKPackBuildDefinitionEntitySinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T02:58:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

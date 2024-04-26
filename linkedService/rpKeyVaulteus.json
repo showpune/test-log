@@ -1,0 +1,11 @@
+{
+	"name": "rpKeyVaulteus",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://ascdevkvrpeusa.vault.azure.net/"
+		},
+		"annotations": []
+	}
+}

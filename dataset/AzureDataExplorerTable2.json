@@ -1,0 +1,29 @@
+{
+	"name": "AzureDataExplorerTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kustoConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [
+			{
+				"name": "originalKey",
+				"type": "string"
+			},
+			{
+				"name": "status",
+				"type": "string"
+			},
+			{
+				"name": "status1",
+				"type": "string"
+			}
+		],
+		"typeProperties": {
+			"table": "B"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

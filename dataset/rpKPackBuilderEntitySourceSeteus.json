@@ -1,0 +1,16 @@
+{
+	"name": "rpKPackBuilderEntitySourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rpConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "KPackBuilderEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,71 @@
+{
+	"name": "lcAppSourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lcConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"schema": {
+			"type": "object",
+			"properties": {
+				"storageAccountId": {
+					"type": "string"
+				},
+				"fqdn": {
+					"type": "string"
+				},
+				"externalEndpointProtocol": {
+					"type": "string"
+				},
+				"ip": {
+					"type": "string"
+				},
+				"softDeleted": {
+					"type": "boolean"
+				},
+				"version": {
+					"type": "string"
+				},
+				"suspended": {
+					"type": "boolean"
+				},
+				"clusterAutoscalerEnabled": {
+					"type": "boolean"
+				},
+				"externalEndpointNamespace": {
+					"type": "string"
+				},
+				"vnetEnabled": {
+					"type": "boolean"
+				},
+				"deleting": {
+					"type": "boolean"
+				},
+				"tier": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"aksClusterId": {
+					"type": "string"
+				},
+				"externalEndpointPort": {
+					"type": "integer"
+				},
+				"serviceId": {
+					"type": "string"
+				},
+				"clusterState": {
+					"type": "string"
+				}
+			}
+		},
+		"typeProperties": {
+			"collectionName": "App"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

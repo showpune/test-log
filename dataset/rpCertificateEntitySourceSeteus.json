@@ -1,0 +1,16 @@
+{
+	"name": "rpCertificateEntitySourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rpConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "CertificateEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

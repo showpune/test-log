@@ -1,0 +1,521 @@
+{
+	"name": "rpDeploymentEntitySyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "rpDeploymentEntitySync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureTableSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"azureTableSourceIgnoreTableNotFound": false
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PartitionKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartitionKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RowKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Timestamp",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "Timestamp",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Active",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "Active",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "AppName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AppName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Args",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Args",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ContainerImage",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ContainerImage",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Cpu",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Cpu",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CpuQuantity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CpuQuantity",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Deleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "Deleted",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "ImageRegistryUsername",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ImageRegistryUsername",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "InstanceCount",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "InstanceCount",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "JvmOptions",
+									"type": "String"
+								},
+								"sink": {
+									"name": "JvmOptions",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "MemoryInGB",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "MemoryInGB",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "MemoryQuantity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MemoryQuantity",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "OperationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OperationId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Patterns",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Patterns",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ProvisioningState",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProvisioningState",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ResourceGroupName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResourceGroupName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RunningStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RunningStatus",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RuntimeVersion",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RuntimeVersion",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Server",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Server",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ServiceName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceRelativePath",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceRelativePath",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SourceType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SourceType",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SubscriptionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubscriptionId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Uuid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Uuid",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Version",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Version",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "NetCoreMainEntryPath"
+								},
+								"sink": {
+									"name": "NetCoreMainEntryPath",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ContainerProbeSettings"
+								},
+								"sink": {
+									"name": "ContainerProbeSettings",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "IsActive"
+								},
+								"sink": {
+									"name": "IsActive",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildName"
+								},
+								"sink": {
+									"name": "BuildName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildResultName"
+								},
+								"sink": {
+									"name": "BuildResultName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildServiceName"
+								},
+								"sink": {
+									"name": "BuildServiceName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildStatus"
+								},
+								"sink": {
+									"name": "BuildStatus",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ImageSpec"
+								},
+								"sink": {
+									"name": "ImageSpec",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ArtifactSelector"
+								},
+								"sink": {
+									"name": "ArtifactSelector",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "syncTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SyncTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "string"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "rpDeploymentEntitySourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "rpDeploymentEntitySinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T02:57:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

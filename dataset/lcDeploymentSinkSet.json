@@ -1,0 +1,173 @@
+{
+	"name": "lcDeploymentSinkSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kustoConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [
+			{
+				"name": "createdAt",
+				"type": "string"
+			},
+			{
+				"name": "updatedAt",
+				"type": "string"
+			},
+			{
+				"name": "serviceId",
+				"type": "string"
+			},
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "appName",
+				"type": "string"
+			},
+			{
+				"name": "started",
+				"type": "bool"
+			},
+			{
+				"name": "artifact_createdAt",
+				"type": "string"
+			},
+			{
+				"name": "artifact_updatedAt",
+				"type": "string"
+			},
+			{
+				"name": "artifact_serviceId",
+				"type": "string"
+			},
+			{
+				"name": "artifact_id",
+				"type": "string"
+			},
+			{
+				"name": "artifact_appName",
+				"type": "string"
+			},
+			{
+				"name": "artifact_dockerImage",
+				"type": "string"
+			},
+			{
+				"name": "artifact_sourceLocation",
+				"type": "string"
+			},
+			{
+				"name": "artifact_provisioningState",
+				"type": "string"
+			},
+			{
+				"name": "artifact_runtimeVersion",
+				"type": "string"
+			},
+			{
+				"name": "artifact_resourceType",
+				"type": "string"
+			},
+			{
+				"name": "artifact_dockerFileLanguage",
+				"type": "string"
+			},
+			{
+				"name": "artifact_relativePath",
+				"type": "string"
+			},
+			{
+				"name": "artifact_type",
+				"type": "string"
+			},
+			{
+				"name": "artifact_jar",
+				"type": "bool"
+			},
+			{
+				"name": "artifact_dotNetZip",
+				"type": "bool"
+			},
+			{
+				"name": "artifact_java",
+				"type": "bool"
+			},
+			{
+				"name": "deploymentSettings_instanceCount",
+				"type": "int"
+			},
+			{
+				"name": "deploymentSettings_memoryInGB",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_cpu",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_resourceRequests_cpu",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_resourceRequests_memory",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_runtimeVersion",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_jvmOptions",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_netcoreMainEntryPath",
+				"type": "string"
+			},
+			{
+				"name": "deploymentSettings_deploymentTimeout",
+				"type": "int"
+			},
+			{
+				"name": "deploymentSettings_containerProbeSettings",
+				"type": "string"
+			},
+			{
+				"name": "active",
+				"type": "bool"
+			},
+			{
+				"name": "deployTag",
+				"type": "string"
+			},
+			{
+				"name": "provisioningState",
+				"type": "string"
+			},
+			{
+				"name": "status",
+				"type": "string"
+			},
+			{
+				"name": "syncTime",
+				"type": "datetime"
+			},
+			{
+				"name": "region",
+				"type": "string"
+			}
+		],
+		"typeProperties": {
+			"table": "lcDeployment"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

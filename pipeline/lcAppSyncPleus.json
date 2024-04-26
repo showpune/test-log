@@ -1,0 +1,281 @@
+{
+	"name": "lcAppSyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "lcAppSync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "CosmosDbSqlApiSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"preferredRegions": []
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['createdAt']"
+								},
+								"sink": {
+									"name": "createdAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedAt']"
+								},
+								"sink": {
+									"name": "updatedAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceId']"
+								},
+								"sink": {
+									"name": "serviceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['httpsOnly']"
+								},
+								"sink": {
+									"name": "httpsOnly",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['enableEndToEndTLS']"
+								},
+								"sink": {
+									"name": "enableEndToEndTLS",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['url']"
+								},
+								"sink": {
+									"name": "url",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['temporaryDisk']['sizeInGB']"
+								},
+								"sink": {
+									"name": "temporaryDisk_sizeInGB",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['temporaryDisk']['mountPath']"
+								},
+								"sink": {
+									"name": "temporaryDisk_mountPath",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['persistentDisk']['sizeInGB']"
+								},
+								"sink": {
+									"name": "persistentDisk_sizeInGB",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['persistentDisk']['mountPath']"
+								},
+								"sink": {
+									"name": "persistentDisk_mountPath",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['applicationConfigurationService']['enabled']"
+								},
+								"sink": {
+									"name": "applicationConfigurationService_enabled",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceRegistry']['enabled']"
+								},
+								"sink": {
+									"name": "serviceRegistry_enabled",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceRegistry']['type']"
+								},
+								"sink": {
+									"name": "serviceRegistry_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceRegistry']['endpoint']"
+								},
+								"sink": {
+									"name": "serviceRegistry_endpoint",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceRegistry']['k8sServiceName']"
+								},
+								"sink": {
+									"name": "serviceRegistry_k8sServiceName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['port']"
+								},
+								"sink": {
+									"name": "port",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['state']"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['provisioningState']"
+								},
+								"sink": {
+									"name": "provisioningState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['public']"
+								},
+								"sink": {
+									"name": "public",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['activeDeploymentName']"
+								},
+								"sink": {
+									"name": "activeDeploymentName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['syncTime']"
+								},
+								"sink": {
+									"name": "syncTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['region']"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "",
+						"mapComplexValuesToString": false
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "lcAppSourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "lcAppSinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T03:00:55Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

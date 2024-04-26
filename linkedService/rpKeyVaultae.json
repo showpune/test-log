@@ -1,0 +1,11 @@
+{
+	"name": "rpKeyVaultae",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://ascdevkvrpaea.vault.azure.net/"
+		},
+		"annotations": []
+	}
+}

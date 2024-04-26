@@ -1,0 +1,129 @@
+{
+	"name": "lcAppClusterSinkSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kustoConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [
+			{
+				"name": "serviceId",
+				"type": "string"
+			},
+			{
+				"name": "tenantId",
+				"type": "string"
+			},
+			{
+				"name": "resourceId",
+				"type": "string"
+			},
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "aksClusterId",
+				"type": "string"
+			},
+			{
+				"name": "storageAccountId",
+				"type": "string"
+			},
+			{
+				"name": "fqdn",
+				"type": "string"
+			},
+			{
+				"name": "ip",
+				"type": "string"
+			},
+			{
+				"name": "version",
+				"type": "string"
+			},
+			{
+				"name": "clusterAutoscalerEnabled",
+				"type": "bool"
+			},
+			{
+				"name": "vnetEnabled",
+				"type": "bool"
+			},
+			{
+				"name": "suspended",
+				"type": "bool"
+			},
+			{
+				"name": "softDeleted",
+				"type": "bool"
+			},
+			{
+				"name": "tier",
+				"type": "string"
+			},
+			{
+				"name": "deleting",
+				"type": "bool"
+			},
+			{
+				"name": "clusterState",
+				"type": "string"
+			},
+			{
+				"name": "powerState",
+				"type": "string"
+			},
+			{
+				"name": "aksSystemClusterId",
+				"type": "string"
+			},
+			{
+				"name": "externalEndpointPort",
+				"type": "int"
+			},
+			{
+				"name": "externalEndpointNamespace",
+				"type": "string"
+			},
+			{
+				"name": "externalEndpointProtocol",
+				"type": "string"
+			},
+			{
+				"name": "monitoringSettingName",
+				"type": "string"
+			},
+			{
+				"name": "traceEnabled",
+				"type": "bool"
+			},
+			{
+				"name": "appInsightsSamplingRate",
+				"type": "real"
+			},
+			{
+				"name": "appInsightsAgentVersions_java",
+				"type": "string"
+			},
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "syncTime",
+				"type": "datetime"
+			},
+			{
+				"name": "region",
+				"type": "string"
+			}
+		],
+		"typeProperties": {
+			"table": "lcAppCluster"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

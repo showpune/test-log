@@ -1,0 +1,16 @@
+{
+	"name": "rpDeploymentEntitySourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rpConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "DeploymentEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

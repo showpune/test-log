@@ -1,0 +1,817 @@
+{
+	"name": "rpServiceInstanceEntitySyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "rpServiceInstanceEntitySync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureTableSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"azureTableSourceIgnoreTableNotFound": false
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PartitionKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PartitionKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RowKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowKey",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Timestamp",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "Timestamp",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "AppInsightsAgentVersions"
+								},
+								"sink": {
+									"name": "AppInsightsAgentVersions",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "AppInsightsSamplingRate"
+								},
+								"sink": {
+									"name": "AppInsightsSamplingRate",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "AppSubnetCidr"
+								},
+								"sink": {
+									"name": "AppSubnetCidr",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BillingCompleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "BillingCompleted",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildServiceAcrName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BuildServiceAcrName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildServiceStatus",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "BuildServiceStatus",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ClusterName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ClusterName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ConfigServerState",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ConfigServerState",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CreationTime",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "CreationTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomDomainId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomDomainId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "EnableAksClusterAutoScaler",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "EnableAksClusterAutoScaler",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "EnableEncryptionAtHost"
+								},
+								"sink": {
+									"name": "EnableEncryptionAtHost",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "EnableEphemeralOs"
+								},
+								"sink": {
+									"name": "EnableEphemeralOs",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "EnableEurekaSelfPreservation",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "EnableEurekaSelfPreservation",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "GracefulShutDownConfig"
+								},
+								"sink": {
+									"name": "GracefulShutDownConfig",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Guid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Guid",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "HasInitClusterEnv",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "HasInitClusterEnv",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "IngressControllerCertName"
+								},
+								"sink": {
+									"name": "IngressControllerCertName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "IngressControllerCertThumbprint"
+								},
+								"sink": {
+									"name": "IngressControllerCertThumbprint",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "InstanceType",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "InstanceType",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IsCloned"
+								},
+								"sink": {
+									"name": "IsCloned",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "IsSuspended",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsSuspended",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "IsTraceEnabled",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsTraceEnabled",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "IsUserClusterScaledIn",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "IsUserClusterScaledIn",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "KPackVersion"
+								},
+								"sink": {
+									"name": "KPackVersion",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "KubernetesClusterId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "KubernetesClusterId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Location",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Location",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "LogStreamEnabled",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "LogStreamEnabled",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "MonitoringType"
+								},
+								"sink": {
+									"name": "MonitoringType",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "NetworkProfile",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NetworkProfile",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "OperationId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OperationId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "PendingUpdate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PendingUpdate",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "PowerState"
+								},
+								"sink": {
+									"name": "PowerState",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ProvisionResourceGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProvisionResourceGroup",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ProvisionSubscriptionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProvisionSubscriptionId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ResourceGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ResourceGroup",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "RestoreConfig"
+								},
+								"sink": {
+									"name": "RestoreConfig",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceRuntimeClientCertName"
+								},
+								"sink": {
+									"name": "ServiceRuntimeClientCertName",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceRuntimeClientCertThumbprint",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ServiceRuntimeClientCertThumbprint",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceRuntimeClusterResourceId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ServiceRuntimeClusterResourceId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "ServiceRuntimeSubnetCidr"
+								},
+								"sink": {
+									"name": "ServiceRuntimeSubnetCidr",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Sku",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Sku",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SoftDeleteStatus",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SoftDeleteStatus",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "SoftDeleteAt"
+								},
+								"sink": {
+									"name": "SoftDeleteAt",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "StorageAccountId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StorageAccountId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SubscriptionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SubscriptionId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "SvcDnsARecordDeleted",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "SvcDnsARecordDeleted",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "SystemKubernetesClusterId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SystemKubernetesClusterId",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "Tags",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Tags",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "TraceProxyState",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "TraceProxyState",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "UpgradeStatus",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "UpgradeStatus",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "UseAmdVm"
+								},
+								"sink": {
+									"name": "UseAmdVm",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "UseNewCnbSpec",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "UseNewCnbSpec",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "UseSsdInUserCluster",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "UseSsdInUserCluster",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "UseStorageFileConfig",
+									"type": "Boolean"
+								},
+								"sink": {
+									"name": "UseStorageFileConfig",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "Version",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "Version",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IsExceededStopTimeCleaned"
+								},
+								"sink": {
+									"name": "IsExceededStopTimeCleaned",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "UseAksManagedIdentity"
+								},
+								"sink": {
+									"name": "UseAksManagedIdentity",
+									"type": "Boolean",
+									"physicalType": "bool"
+								}
+							},
+							{
+								"source": {
+									"name": "BuildServiceContainerRegistrySource"
+								},
+								"sink": {
+									"name": "BuildServiceContainerRegistrySource",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "InternalStatus"
+								},
+								"sink": {
+									"name": "InternalStatus",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "StartedAt",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "StartedAt",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "StoppedAt",
+									"type": "DateTimeOffset"
+								},
+								"sink": {
+									"name": "StoppedAt",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "MaintenanceScheduleConfiguration",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MaintenanceScheduleConfiguration",
+									"type": "String",
+									"physicalType": "string"
+								}
+							},
+							{
+								"source": {
+									"name": "syncTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SyncTime",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Region",
+									"type": "String",
+									"physicalType": "string"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "rpServiceInstanceEntitySourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "rpServiceInstanceEntitySinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T03:32:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "rpAsyncOperationEntitySinkSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kustoConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDataExplorerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "rpAsyncOperationEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

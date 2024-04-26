@@ -1,0 +1,25 @@
+{
+	"name": "lcDeploymentSyncTreus",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "lcDeploymentSyncPleus",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1440,
+				"startTime": "2022-01-20T01:00:00Z",
+				"endTime": "2031-12-31T23:59:59Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

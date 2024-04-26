@@ -1,0 +1,16 @@
+{
+	"name": "rpAppEntitySourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rpConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "AppEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,12 @@
+{
+	"name": "kustoConnection",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataExplorer",
+		"typeProperties": {
+			"endpoint": "https://springcloud.eastus2.kusto.windows.net",
+			"database": "control-meta"
+		}
+	}
+}

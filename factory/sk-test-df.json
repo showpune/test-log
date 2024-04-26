@@ -1,0 +1,9 @@
+{
+	"name": "sk-test-df",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "09d03663-a3b1-41ca-9e6e-4acb48bd199a",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}

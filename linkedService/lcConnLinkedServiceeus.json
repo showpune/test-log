@@ -1,0 +1,12 @@
+{
+	"name": "lcConnLinkedServiceeus",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "CosmosDb",
+		"typeProperties": {
+			"accountEndpoint": "https://ascdevcosmoslceusa.documents.azure.com:443",
+			"database": "lifecycle"
+		},
+		"annotations": []
+	}
+}

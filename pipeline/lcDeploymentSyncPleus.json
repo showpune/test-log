@@ -1,0 +1,407 @@
+{
+	"name": "lcDeploymentSyncPleus",
+	"properties": {
+		"activities": [
+			{
+				"name": "lcDeploymentSync",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "CosmosDbSqlApiSource",
+						"additionalColumns": [
+							{
+								"name": "syncTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "region",
+								"value": "eastus"
+							}
+						],
+						"preferredRegions": []
+					},
+					"sink": {
+						"type": "AzureDataExplorerSink"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['createdAt']"
+								},
+								"sink": {
+									"name": "createdAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedAt']"
+								},
+								"sink": {
+									"name": "updatedAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['serviceId']"
+								},
+								"sink": {
+									"name": "serviceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['appName']"
+								},
+								"sink": {
+									"name": "appName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['started']"
+								},
+								"sink": {
+									"name": "started",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['createdAt']"
+								},
+								"sink": {
+									"name": "artifact_createdAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['updatedAt']"
+								},
+								"sink": {
+									"name": "artifact_updatedAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['serviceId']"
+								},
+								"sink": {
+									"name": "artifact_serviceId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['id']"
+								},
+								"sink": {
+									"name": "artifact_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['appName']"
+								},
+								"sink": {
+									"name": "artifact_appName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['dockerImage']"
+								},
+								"sink": {
+									"name": "artifact_dockerImage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['sourceLocation']"
+								},
+								"sink": {
+									"name": "artifact_sourceLocation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['provisioningState']"
+								},
+								"sink": {
+									"name": "artifact_provisioningState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['runtimeVersion']"
+								},
+								"sink": {
+									"name": "artifact_runtimeVersion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['resourceType']"
+								},
+								"sink": {
+									"name": "artifact_resourceType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['dockerFileLanguage']"
+								},
+								"sink": {
+									"name": "artifact_dockerFileLanguage",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['relativePath']"
+								},
+								"sink": {
+									"name": "artifact_relativePath",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['type']"
+								},
+								"sink": {
+									"name": "artifact_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['jar']"
+								},
+								"sink": {
+									"name": "artifact_jar",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['java']"
+								},
+								"sink": {
+									"name": "artifact_dotNetZip",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['artifact']['dotNetZip']"
+								},
+								"sink": {
+									"name": "artifact_java",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['instanceCount']"
+								},
+								"sink": {
+									"name": "deploymentSettings_instanceCount",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['memoryInGB']"
+								},
+								"sink": {
+									"name": "deploymentSettings_memoryInGB",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['cpu']"
+								},
+								"sink": {
+									"name": "deploymentSettings_cpu",
+									"type": "string"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['resourceRequests']['cpu']"
+								},
+								"sink": {
+									"name": "deploymentSettings_resourceRequests_cpu",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['resourceRequests']['memory']"
+								},
+								"sink": {
+									"name": "deploymentSettings_resourceRequests_memory",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['runtimeVersion']"
+								},
+								"sink": {
+									"name": "deploymentSettings_runtimeVersion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['jvmOptions']"
+								},
+								"sink": {
+									"name": "deploymentSettings_jvmOptions",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['netcoreMainEntryPath']"
+								},
+								"sink": {
+									"name": "deploymentSettings_netcoreMainEntryPath",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deploymentSettings']['deploymentTimeout']"
+								},
+								"sink": {
+									"name": "deploymentSettings_deploymentTimeout",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"path": "$['active']"
+								},
+								"sink": {
+									"name": "active",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['deployTag']"
+								},
+								"sink": {
+									"name": "deployTag",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['provisioningState']"
+								},
+								"sink": {
+									"name": "provisioningState",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['status']"
+								},
+								"sink": {
+									"name": "status",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['syncTime']"
+								},
+								"sink": {
+									"name": "syncTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['region']"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": "",
+						"mapComplexValuesToString": false
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "lcDeploymentSourceSeteus",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "lcDeploymentSinkSet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-03-19T03:01:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

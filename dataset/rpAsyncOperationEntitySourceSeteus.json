@@ -1,0 +1,16 @@
+{
+	"name": "rpAsyncOperationEntitySourceSeteus",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "rpConnLinkedServiceeus",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "AsyncOperationEntity"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
